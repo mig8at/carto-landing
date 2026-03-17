@@ -6,6 +6,43 @@
     color-scheme: dark;
 }
 
+@layer base {
+    body {
+        @apply bg-background text-white font-sans antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: theme('fontFamily.serif');
+        @apply font-bold;
+    }
+}
+
 html {
     scroll-behavior: smooth;
+}
+
+.dot-grid {
+    background-image: radial-gradient(circle, rgba(242, 233, 210, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.cursor-blink {
+    animation: blink 1s infinite;
 }

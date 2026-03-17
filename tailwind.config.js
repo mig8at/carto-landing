@@ -7,14 +7,20 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#0a0a0a',
-                card: '#111111',
-                primary: '#3b82f6',
+                background: '#131313',
+                card: '#1c1c1c',
+                primary: {
+                    DEFAULT: '#f2e9d2',
+                    foreground: '#131313',
+                },
+                border: 'rgba(255,255,255,0.07)',
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                serif: ['Bricolage Grotesque', 'serif'],
-            }
+                // Matches the app exactly
+                sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
+                serif: ['Bricolage Grotesque', 'ui-serif'],
+                mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace'],
+            },
         },
     },
     plugins: [],
