@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import {
     MessageSquare, Map, ArrowRight,
     Check, ShoppingCart, BookOpen, Shield, Zap, Terminal,
-    ChevronRight, Sparkles, Image as ImageIcon,
+    ChevronRight, Sparkles,
     Monitor, Apple, HardDrive, Download
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -53,14 +53,6 @@ const Step = ({ n, title, desc }: { n: string; title: string; desc: string }) =>
             <p className="text-[0.78rem] text-muted-foreground leading-relaxed">{desc}</p>
         </div>
     </motion.div>
-);
-
-const ScreenshotPlaceholder = ({ description, className = "" }: { description: string, className?: string }) => (
-    <div className={`flex flex-col items-center justify-center bg-card border border-border rounded-2xl p-8 text-center shadow-xl overflow-hidden relative group ${className}`}>
-        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <ImageIcon size={48} className="text-muted-foreground mb-4 opacity-50" />
-        <p className="text-sm font-mono text-muted-foreground max-w-md relative z-10">{description}</p>
-    </div>
 );
 
 const CartoLogo = ({ size = 'md' }: { size?: 'sm' | 'md' }) => {
@@ -145,25 +137,19 @@ export default function LandingPage() {
                             Download App
                         </a>
                     </div>
-                    <div className="flex flex-wrap gap-x-8 gap-y-2 justify-center mt-8">
-                        {['500+ developers', '100% local indexing', '14-day guarantee', 'Lifetime updates'].map(t => (
-                            <span key={t} className="text-[0.75rem] text-muted-foreground font-medium flex items-center gap-1.5">
-                                <Check size={12} className="text-primary/60" /> {t}
-                            </span>
-                        ))}
-                    </div>
                 </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 40, scale: 0.97 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.9, delay: 0.3 }}
-                    className="mt-20 relative w-full"
+                    className="mt-20 relative w-full flex justify-center"
                 >
                     <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full scale-75 pointer-events-none" />
-                    <ScreenshotPlaceholder
-                        className="w-full aspect-[16/9] lg:aspect-[21/9]"
-                        description="Screenshot: Interfaz principal de Carto mostrando la vista dividida. A la izquierda la barra lateral con los proyectos, en el centro el Chat Experto (StreamingChatView) respondiendo una pregunta técnica con referencias a código, y a la derecha detalles de los tokens y costo en dólares."
+                    <video
+                        src="../assets/chat.mp4"
+                        autoPlay loop muted playsInline
+                        className="w-full max-w-5xl h-auto rounded-2xl border border-border shadow-2xl object-contain"
                     />
                 </motion.div>
             </section>
@@ -205,17 +191,35 @@ export default function LandingPage() {
                             <li className="flex items-center gap-2"><Check size={16} className="text-primary" /> Updates in real-time as you modify your code</li>
                         </ul>
                     </div>
-                    <ScreenshotPlaceholder
-                        className="w-full aspect-square md:aspect-[4/3]"
-                        description="Screenshot: Vista del GraphView (React Flow) mostrando nodos estilizados que representan dominios del sistema conectados mediante flechas animadas, con iconos tecnológicos (ej. React, Go, Postgres)."
-                    />
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="flex justify-center"
+                    >
+                        <video
+                            src="../assets/graph.mp4"
+                            autoPlay loop muted playsInline
+                            className="w-full h-auto rounded-2xl border border-border shadow-xl object-contain"
+                        />
+                    </motion.div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-16 items-center">
-                    <ScreenshotPlaceholder
-                        className="w-full aspect-square md:aspect-[4/3] order-2 md:order-1"
-                        description="Screenshot: Interfaz de chat mostrando insignias '🔍 Analyzing: 5 relevant files' y una respuesta en Markdown con sintaxis especial donde los nombres de archivos son links clickeables de color primario."
-                    />
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="order-2 md:order-1 flex justify-center"
+                    >
+                        <video
+                            src="../assets/files.mp4"
+                            autoPlay loop muted playsInline
+                            className="w-full h-auto rounded-2xl border border-border shadow-xl object-contain"
+                        />
+                    </motion.div>
                     <div className="order-1 md:order-2">
                         <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
                             <MessageSquare size={24} />
@@ -279,16 +283,17 @@ export default function LandingPage() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
+                        className="flex justify-center"
                     >
-                        <ScreenshotPlaceholder
-                            className="w-full aspect-square md:aspect-[4/3] bg-background"
-                            description="Screenshot: ScanProgressView de la aplicación, mostrando la lista de pasos (Indexing, Structural Analysis, Dependency Map, Route Mapping, Architecture AI) con indicadores de carga y checks de éxito."
+                        <video
+                            src="../assets/files.mp4"
+                            autoPlay loop muted playsInline
+                            className="w-full h-auto rounded-2xl border border-border shadow-xl object-contain"
                         />
                     </motion.div>
                 </div>
             </section>
 
-            {/* ── Downloads Section ────────────────────────────────────────────── */}
             <section id="download" className="relative max-w-5xl mx-auto px-6 py-32 z-10">
                 <div className="text-center mb-16">
                     <Badge>Cross Platform</Badge>
@@ -301,9 +306,9 @@ export default function LandingPage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <DownloadCard os="macOS" icon={Apple} version="v1.0.4" ext="DMG / Apple Silicon" link="https://github.com/mig8at/carto-landing/releases/download/v1.0.4/mac.png" />
-                    <DownloadCard os="Windows" icon={Monitor} version="v1.0.4" ext="MSI / x64" link="https://github.com/mig8at/carto-landing/releases/download/v1.0.4/windows.png" />
-                    <DownloadCard os="Linux" icon={HardDrive} version="v1.0.4" ext="AppImage / Deb" link="https://github.com/mig8at/carto-landing/releases/download/v1.0.4/linux.png" />
+                    <DownloadCard os="macOS" icon={Apple} version="v1.0.4" ext="DMG / Apple Silicon" link="#" />
+                    <DownloadCard os="Windows" icon={Monitor} version="v1.0.4" ext="MSI / x64" link="#" />
+                    <DownloadCard os="Linux" icon={HardDrive} version="v1.0.4" ext="AppImage / Deb" link="#" />
                 </div>
 
                 <div className="mt-12 p-6 rounded-2xl bg-secondary/20 border border-border flex flex-col md:flex-row items-center justify-between gap-4">
@@ -368,7 +373,7 @@ export default function LandingPage() {
                                 ))}
                             </ul>
                             <a
-                                href="https://tu-tienda.lemonsqueezy.com/checkout/carto"
+                                href="https://cartolabs.io/checkout"
                                 className="block w-full bg-background text-foreground py-4 rounded-2xl font-black text-[1rem] hover:opacity-90 transition-all flex items-center justify-center gap-3 shadow-lg"
                             >
                                 <ShoppingCart size={20} /> Get License Key
