@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import {
     MessageSquare, Map, ArrowRight,
     Check, ShoppingCart, BookOpen, Shield, Zap, Terminal,
-    ChevronRight, Sparkles, Image as ImageIcon
+    ChevronRight, Sparkles, Image as ImageIcon,
+    Monitor, Apple, HardDrive, Download
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -62,12 +63,10 @@ const ScreenshotPlaceholder = ({ description, className = "" }: { description: s
     </div>
 );
 
-// ── Logo component — uses your custom icon ────────────────────────────────────
 const CartoLogo = ({ size = 'md' }: { size?: 'sm' | 'md' }) => {
     const iconSize = size === 'sm' ? 'w-6 h-6' : 'w-8 h-8';
     const textSize = size === 'sm' ? 'text-lg' : 'text-xl';
     const labelSize = size === 'sm' ? 'text-[0.5rem]' : 'text-xs';
-
     return (
         <div className={`flex items-center gap-2.5 font-black ${textSize} tracking-tighter`}>
             <img
@@ -81,22 +80,32 @@ const CartoLogo = ({ size = 'md' }: { size?: 'sm' | 'md' }) => {
     );
 };
 
+const DownloadCard = ({ os, icon: Icon, version, ext }: any) => (
+    <div className="bg-card border border-border p-6 rounded-3xl flex flex-col items-center text-center group hover:border-primary/30 transition-all">
+        <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+            <Icon size={24} />
+        </div>
+        <h4 className="font-bold text-foreground mb-1">{os}</h4>
+        <p className="text-[0.65rem] text-muted-foreground uppercase tracking-widest mb-6">{version} • {ext}</p>
+        <button className="w-full py-3 bg-secondary hover:bg-primary hover:text-primary-foreground rounded-xl text-[0.75rem] font-black transition-all flex items-center justify-center gap-2">
+            <Download size={14} /> Download
+        </button>
+    </div>
+);
+
 export default function LandingPage() {
     return (
-        <div className="overflow-x-hidden bg-background text-foreground min-h-screen">
+        <div className="overflow-x-hidden bg-background text-foreground min-h-screen font-sans">
             <div className="fixed inset-0 pointer-events-none dot-grid opacity-30" />
 
-            {/* ── Nav ─────────────────────────────────────────────────────────────── */}
             <nav className="relative max-w-7xl mx-auto px-6 py-7 flex justify-between items-center z-10">
                 <CartoLogo />
-
                 <div className="hidden md:flex items-center gap-8 text-[0.82rem] font-semibold text-muted-foreground">
                     <a href="#features" className="hover:text-foreground transition-colors">Features</a>
                     <a href="#how" className="hover:text-foreground transition-colors">How it works</a>
+                    <a href="#download" className="hover:text-foreground transition-colors">Download</a>
                     <a href="#pricing" className="hover:text-foreground transition-colors">Pricing</a>
-                    <a href="mailto:hello@cartolabs.io" className="hover:text-foreground transition-colors">Support</a>
                 </div>
-
                 <a
                     href="#pricing"
                     className="bg-primary text-primary-foreground px-5 py-2 rounded-full text-[0.8rem] font-black hover:opacity-90 transition-all flex items-center gap-1.5"
@@ -105,7 +114,6 @@ export default function LandingPage() {
                 </a>
             </nav>
 
-            {/* ── Hero ────────────────────────────────────────────────────────────── */}
             <section className="relative max-w-6xl mx-auto px-6 pt-16 pb-24 text-center z-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
                     <Badge>Now in Early Access</Badge>
@@ -126,10 +134,10 @@ export default function LandingPage() {
                             Get Lifetime Access <ArrowRight size={18} />
                         </a>
                         <a
-                            href="#how"
+                            href="#download"
                             className="border border-border text-muted-foreground px-8 py-4 rounded-2xl font-bold flex items-center gap-2 hover:bg-secondary transition-colors text-[0.9rem]"
                         >
-                            See how it works
+                            Download App
                         </a>
                     </div>
                     <div className="flex flex-wrap gap-x-8 gap-y-2 justify-center mt-8">
@@ -155,7 +163,6 @@ export default function LandingPage() {
                 </motion.div>
             </section>
 
-            {/* ── Language strip ──────────────────────────────────────────────────── */}
             <div className="border-y border-border py-8 relative z-10 bg-background/50 backdrop-blur-sm">
                 <div className="max-w-5xl mx-auto px-6">
                     <p className="text-center text-[0.65rem] font-black uppercase tracking-[0.2em] text-muted-foreground mb-6">
@@ -169,7 +176,6 @@ export default function LandingPage() {
                 </div>
             </div>
 
-            {/* ── Features ────────────────────────────────────────────────────────── */}
             <section id="features" className="relative max-w-7xl mx-auto px-6 py-32 z-10 space-y-32">
                 <div className="text-center mb-16">
                     <Badge>Features</Badge>
@@ -221,27 +227,6 @@ export default function LandingPage() {
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
-                            <Shield size={24} />
-                        </div>
-                        <h3 className="text-3xl font-black mb-4 font-serif text-foreground">Local-First Privacy</h3>
-                        <p className="text-muted-foreground leading-relaxed mb-6">
-                            Security is not an afterthought. Your codebase is physically scanned and indexed into a local SQLite database. AI calls are strictly opt-in and only transmit necessary snippets.
-                        </p>
-                        <ul className="space-y-3 text-sm font-medium text-muted-foreground">
-                            <li className="flex items-center gap-2"><Check size={16} className="text-primary" /> Zero cloud uploads of your repository</li>
-                            <li className="flex items-center gap-2"><Check size={16} className="text-primary" /> Bring your own API Key</li>
-                            <li className="flex items-center gap-2"><Check size={16} className="text-primary" /> Works completely offline for indexing and AST parsing</li>
-                        </ul>
-                    </div>
-                    <ScreenshotPlaceholder
-                        className="w-full aspect-square md:aspect-[4/3]"
-                        description="Screenshot: Vista de configuración (SettingsView) mostrando el input para la API Key, los selectores de lenguaje, y la consola de diagnóstico (DebugView) mostrando los logs locales de SQLite procesando archivos sin internet."
-                    />
-                </div>
-
                 <div className="grid md:grid-cols-3 gap-6 pt-16 border-t border-border">
                     <FeatureCard
                         icon={Zap}
@@ -262,7 +247,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* ── How it works ────────────────────────────────────────────────────── */}
             <section id="how" className="relative max-w-6xl mx-auto px-6 py-24 z-10 bg-secondary/30 rounded-3xl border border-border">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div>
@@ -299,7 +283,43 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* ── Pricing ─────────────────────────────────────────────────────────── */}
+            {/* ── Downloads Section ────────────────────────────────────────────── */}
+            <section id="download" className="relative max-w-5xl mx-auto px-6 py-32 z-10">
+                <div className="text-center mb-16">
+                    <Badge>Cross Platform</Badge>
+                    <h2 className="text-[2.2rem] md:text-[3rem] font-black mt-6 mb-4 tracking-tighter font-serif">
+                        Ready for your <span className="text-primary">OS</span>
+                    </h2>
+                    <p className="text-muted-foreground max-w-lg mx-auto text-[0.9rem]">
+                        Download the desktop client. No complex installation, just run and start exploring.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <DownloadCard os="macOS" icon={Apple} version="v1.0.4" ext="DMG / Apple Silicon" />
+                    <DownloadCard os="Windows" icon={Monitor} version="v1.0.4" ext="MSI / x64" />
+                    <DownloadCard os="Linux" icon={HardDrive} version="v1.0.4" ext="AppImage / Deb" />
+                </div>
+
+                <div className="mt-12 p-6 rounded-2xl bg-secondary/20 border border-border flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <Shield size={18} />
+                        </div>
+                        <div className="text-left">
+                            <p className="text-[0.8rem] font-bold text-foreground">Signed & Secure</p>
+                            <p className="text-[0.7rem] text-muted-foreground">Verified binaries. Your source code remains 100% private.</p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-6">
+                        <div className="text-center md:text-right">
+                            <p className="text-[0.6rem] font-black uppercase tracking-widest text-muted-foreground mb-1">Current Stable</p>
+                            <p className="text-[0.8rem] font-mono font-bold text-primary">build_id: carto_v1.0.4_stable</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id="pricing" className="relative max-w-2xl mx-auto px-6 py-32 z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -342,7 +362,6 @@ export default function LandingPage() {
                                     </li>
                                 ))}
                             </ul>
-                            {/* ⚠️  Replace this URL with your real LemonSqueezy checkout link */}
                             <a
                                 href="https://tu-tienda.lemonsqueezy.com/checkout/carto"
                                 className="block w-full bg-background text-foreground py-4 rounded-2xl font-black text-[1rem] hover:opacity-90 transition-all flex items-center justify-center gap-3 shadow-lg"
@@ -357,17 +376,14 @@ export default function LandingPage() {
                 </motion.div>
             </section>
 
-            {/* ── Footer ──────────────────────────────────────────────────────────── */}
             <footer className="border-t border-border py-16 px-6 relative z-10">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                     <CartoLogo size="sm" />
-
                     <div className="flex gap-8 text-[0.75rem] text-muted-foreground font-bold uppercase tracking-widest">
                         <Link to="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
                         <Link to="/terms" className="hover:text-foreground transition-colors">Terms</Link>
                         <a href="mailto:support@cartolabs.io" className="hover:text-foreground transition-colors">Contact</a>
                     </div>
-
                     <p className="text-muted-foreground text-[0.78rem] font-medium">
                         © 2024 CartoLabs. Made in Medellín 🇨🇴
                     </p>
