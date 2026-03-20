@@ -80,16 +80,21 @@ const CartoLogo = ({ size = 'md' }: { size?: 'sm' | 'md' }) => {
     );
 };
 
-const DownloadCard = ({ os, icon: Icon, version, ext }: any) => (
+const DownloadCard = ({ os, icon: Icon, version, ext, link }: any) => (
     <div className="bg-card border border-border p-6 rounded-3xl flex flex-col items-center text-center group hover:border-primary/30 transition-all">
         <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
             <Icon size={24} />
         </div>
         <h4 className="font-bold text-foreground mb-1">{os}</h4>
         <p className="text-[0.65rem] text-muted-foreground uppercase tracking-widest mb-6">{version} • {ext}</p>
-        <button className="w-full py-3 bg-secondary hover:bg-primary hover:text-primary-foreground rounded-xl text-[0.75rem] font-black transition-all flex items-center justify-center gap-2">
+
+        <a
+            href={link}
+            download
+            className="cursor-pointer w-full py-3 bg-secondary hover:bg-primary hover:text-primary-foreground rounded-xl text-[0.75rem] font-black transition-all flex items-center justify-center gap-2"
+        >
             <Download size={14} /> Download
-        </button>
+        </a>
     </div>
 );
 
@@ -296,9 +301,9 @@ export default function LandingPage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <DownloadCard os="macOS" icon={Apple} version="v1.0.4" ext="DMG / Apple Silicon" />
-                    <DownloadCard os="Windows" icon={Monitor} version="v1.0.4" ext="MSI / x64" />
-                    <DownloadCard os="Linux" icon={HardDrive} version="v1.0.4" ext="AppImage / Deb" />
+                    <DownloadCard os="macOS" icon={Apple} version="v1.0.4" ext="DMG / Apple Silicon" link="https://github.com/mig8at/carto-landing/releases/download/v1.0.4/mac.png" />
+                    <DownloadCard os="Windows" icon={Monitor} version="v1.0.4" ext="MSI / x64" link="https://github.com/mig8at/carto-landing/releases/download/v1.0.4/windows.png" />
+                    <DownloadCard os="Linux" icon={HardDrive} version="v1.0.4" ext="AppImage / Deb" link="https://github.com/mig8at/carto-landing/releases/download/v1.0.4/linux.png" />
                 </div>
 
                 <div className="mt-12 p-6 rounded-2xl bg-secondary/20 border border-border flex flex-col md:flex-row items-center justify-between gap-4">
