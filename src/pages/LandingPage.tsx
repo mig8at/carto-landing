@@ -149,7 +149,7 @@ export default function LandingPage() {
                     <video
                         src="../assets/chat.mp4"
                         autoPlay loop muted playsInline
-                        className="w-full max-w-5xl h-auto rounded-2xl border border-border shadow-2xl object-contain"
+                        className="w-full max-w-5xl h-auto  border border-border shadow-2xl object-contain"
                     />
                 </motion.div>
             </section>
@@ -201,7 +201,7 @@ export default function LandingPage() {
                         <video
                             src="../assets/graph.mp4"
                             autoPlay loop muted playsInline
-                            className="w-full h-auto rounded-2xl border border-border shadow-xl object-contain"
+                            className="w-full h-auto border border-border shadow-xl object-contain"
                         />
                     </motion.div>
                 </div>
@@ -217,7 +217,7 @@ export default function LandingPage() {
                         <video
                             src="../assets/files.mp4"
                             autoPlay loop muted playsInline
-                            className="w-full h-auto rounded-2xl border border-border shadow-xl object-contain"
+                            className="w-full h-auto border border-border shadow-xl object-contain"
                         />
                     </motion.div>
                     <div className="order-1 md:order-2">
@@ -288,7 +288,7 @@ export default function LandingPage() {
                         <video
                             src="../assets/files.mp4"
                             autoPlay loop muted playsInline
-                            className="w-full h-auto rounded-2xl border border-border shadow-xl object-contain"
+                            className="w-full h-auto border border-border shadow-xl object-contain"
                         />
                     </motion.div>
                 </div>
