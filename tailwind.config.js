@@ -7,16 +7,46 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#131313',
-                card: '#1c1c1c',
-                primary: {
-                    DEFAULT: '#f2e9d2',
-                    foreground: '#131313',
+                background: 'var(--background)',
+                foreground: 'var(--foreground)',
+                card: {
+                    DEFAULT: 'var(--card)',
+                    foreground: 'var(--card-foreground)',
                 },
-                border: 'rgba(255,255,255,0.07)',
+                popover: {
+                    DEFAULT: 'var(--popover)',
+                    foreground: 'var(--popover-foreground)',
+                },
+                primary: {
+                    DEFAULT: 'var(--primary)',
+                    foreground: 'var(--primary-foreground)',
+                },
+                secondary: {
+                    DEFAULT: 'var(--secondary)',
+                    foreground: 'var(--secondary-foreground)',
+                },
+                muted: {
+                    DEFAULT: 'var(--muted)',
+                    foreground: 'var(--muted-foreground)',
+                },
+                accent: {
+                    DEFAULT: 'var(--accent)',
+                    foreground: 'var(--accent-foreground)',
+                },
+                destructive: {
+                    DEFAULT: 'var(--destructive)',
+                    foreground: 'var(--destructive-foreground)',
+                },
+                border: 'var(--border)',
+                input: 'var(--input)',
+                ring: 'var(--ring)',
+            },
+            borderRadius: {
+                lg: 'var(--radius)',
+                md: 'calc(var(--radius) - 2px)',
+                sm: 'calc(var(--radius) - 4px)',
             },
             fontFamily: {
-                // Matches the app exactly
                 sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
                 serif: ['Bricolage Grotesque', 'ui-serif'],
                 mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace'],
