@@ -70,7 +70,7 @@ const CartoLogo = ({ size = 'md' }: { size?: 'sm' | 'md' }) => {
     return (
         <div className={`flex items-center gap-2.5 font-black ${textSize} tracking-tighter`}>
             <img
-                src="/assets/icon.png"
+                src="../assets/icon.png"
                 alt="Carto"
                 className={`${iconSize} object-contain`}
             />
