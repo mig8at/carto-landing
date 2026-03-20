@@ -1,11 +1,14 @@
+import React, { useRef } from 'react'; // Importar useRef
 import { motion } from 'framer-motion';
 import {
     MessageSquare, Map, ArrowRight,
     Check, ShoppingCart, BookOpen, Shield, Zap, Terminal,
     ChevronRight, Sparkles,
-    Monitor, Apple, HardDrive, Download
+    Monitor, Apple, HardDrive, Download, Maximize // Añadir Maximize
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+// --- COMPONENTES AUXILIARES ---
 
 const Badge = ({ children }: { children: React.ReactNode }) => (
     <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-[0.65rem] font-black uppercase tracking-[0.2em] border border-primary/20">
@@ -13,6 +16,40 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
         {children}
     </span>
 );
+
+const VideoPlayer = ({ src, className }: { src: string; className?: string }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    const toggleFullscreen = () => {
+        if (videoRef.current) {
+            if (videoRef.current.requestFullscreen) {
+                videoRef.current.requestFullscreen();
+            } else if ((videoRef.current as any).webkitRequestFullscreen) {
+                (videoRef.current as any).webkitRequestFullscreen();
+            }
+        }
+    };
+
+    return (
+        <div className="relative group w-full flex justify-center">
+            <video
+                ref={videoRef}
+                src={src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className={`${className} object-cover`}
+            />
+            <button
+                onClick={toggleFullscreen}
+                className="absolute bottom-4 right-4 p-2.5 bg-black/60 hover:bg-primary text-white rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md border border-white/20 shadow-xl"
+            >
+                <Maximize size={20} />
+            </button>
+        </div>
+    );
+};
 
 const FeatureCard = ({ icon: Icon, title, desc, accent = false }: any) => (
     <motion.div
@@ -146,10 +183,9 @@ export default function LandingPage() {
                     className="mt-20 relative w-full flex justify-center"
                 >
                     <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full scale-75 pointer-events-none" />
-                    <video
+                    <VideoPlayer
                         src="../assets/chat.mp4"
-                        autoPlay loop muted playsInline
-                        className="w-full max-w-5xl h-auto  border border-border shadow-2xl object-contain"
+                        className="w-full max-w-5xl h-auto border border-border shadow-2xl object-contain"
                     />
                 </motion.div>
             </section>
@@ -198,9 +234,8 @@ export default function LandingPage() {
                         transition={{ duration: 0.6 }}
                         className="flex justify-center"
                     >
-                        <video
+                        <VideoPlayer
                             src="../assets/graph.mp4"
-                            autoPlay loop muted playsInline
                             className="w-full h-auto border border-border shadow-xl object-contain"
                         />
                     </motion.div>
@@ -214,9 +249,8 @@ export default function LandingPage() {
                         transition={{ duration: 0.6 }}
                         className="order-2 md:order-1 flex justify-center"
                     >
-                        <video
+                        <VideoPlayer
                             src="../assets/files.mp4"
-                            autoPlay loop muted playsInline
                             className="w-full h-auto border border-border shadow-xl object-contain"
                         />
                     </motion.div>
@@ -256,6 +290,7 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* ... Resto del código se mantiene igual ... */}
             <section id="how" className="relative max-w-6xl mx-auto px-6 py-24 z-10 bg-secondary/30 rounded-3xl border border-border">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div>
@@ -285,11 +320,7 @@ export default function LandingPage() {
                         transition={{ duration: 0.6 }}
                         className="flex justify-center"
                     >
-                        <video
-                            src="../assets/files.mp4"
-                            autoPlay loop muted playsInline
-                            className="w-full h-auto border border-border shadow-xl object-contain"
-                        />
+                        <img src="../assets/full.png" alt="full" />
                     </motion.div>
                 </div>
             </section>
@@ -337,7 +368,7 @@ export default function LandingPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <div className="bg-primary text-primary-foreground rounded-[2rem] p-10 md:p-14 text-center relative overflow-hidden shadow-[0_40px_80px_-20px_rgba(242,233,210,0.2)]">
+                    <div className="bg-primary text-primary-foreground rounded-[2rem] p-10 md:p-14 text-center relative overflow-hidden shadow-[0_40px_80px_-20px_rgba(242,233,210,0.25)]">
                         <div
                             className="absolute inset-0 opacity-20 pointer-events-none"
                             style={{
