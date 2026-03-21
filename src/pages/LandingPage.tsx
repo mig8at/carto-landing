@@ -162,7 +162,7 @@ export default function LandingPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
                         <a
-                            href="https://carto.lemonsqueezy.com/checkout/buy/f0f8f1d9-323b-49dd-8905-f05c98159e98"
+                            href="https://carto.lemonsqueezy.com/checkout/buy/eec0657a-4077-41c7-8c3e-a10e16048769"
                             className="bg-primary text-primary-foreground px-8 py-4 rounded-2xl font-black flex items-center gap-3 hover:scale-[1.03] transition-transform shadow-[0_16px_48px_-12px_rgba(242,233,210,0.25)] text-[0.9rem]"
                         >
                             Get Lifetime Access <ArrowRight size={18} />
@@ -342,7 +342,7 @@ export default function LandingPage() {
                         icon={Apple}
                         version="v1.0.0"
                         ext="DMG / Universal"
-                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_universal.dmg"
+                        link="https://github.com/mig8at/carto-explorer/raw/main/releases/download/v1.0.0/Carto_1.0.0_universal.dmg"
                     />
 
                     <DownloadCard
@@ -350,7 +350,7 @@ export default function LandingPage() {
                         icon={Monitor}
                         version="v1.0.0"
                         ext="MSI / x64"
-                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi"
+                        link="https://github.com/mig8at/carto-explorer/raw/main/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi"
                     />
 
                     <DownloadCard
@@ -358,7 +358,7 @@ export default function LandingPage() {
                         icon={HardDrive}
                         version="v1.0.0"
                         ext="AppImage"
-                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_amd64.AppImage"
+                        link="https://github.com/mig8at/carto-explorer/raw/main/releases/download/v1.0.0/Carto_1.0.0_amd64.AppImage"
                     />
                 </div>
 
@@ -424,7 +424,7 @@ export default function LandingPage() {
                                 ))}
                             </ul>
                             <a
-                                href="https://carto.lemonsqueezy.com/checkout/buy/f0f8f1d9-323b-49dd-8905-f05c98159e98"
+                                href="https://carto.lemonsqueezy.com/checkout/buy/eec0657a-4077-41c7-8c3e-a10e16048769"
                                 className="block w-full bg-background text-foreground py-4 rounded-2xl font-black text-[1rem] hover:opacity-90 transition-all flex items-center justify-center gap-3 shadow-lg"
                             >
                                 <ShoppingCart size={20} /> Get License Key
