@@ -337,9 +337,29 @@ export default function LandingPage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <DownloadCard os="macOS" icon={Apple} version="v1.0.4" ext="DMG / Apple Silicon" link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi" />
-                    <DownloadCard os="Windows" icon={Monitor} version="v1.0.4" ext="MSI / x64" link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi" />
-                    <DownloadCard os="Linux" icon={HardDrive} version="v1.0.4" ext="AppImage / Deb" link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi" />
+                    <DownloadCard
+                        os="macOS"
+                        icon={Apple}
+                        version="v1.0.0"
+                        ext="DMG / Universal"
+                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_universal.dmg"
+                    />
+
+                    <DownloadCard
+                        os="Windows"
+                        icon={Monitor}
+                        version="v1.0.0"
+                        ext="MSI / x64"
+                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi"
+                    />
+
+                    <DownloadCard
+                        os="Linux"
+                        icon={HardDrive}
+                        version="v1.0.0"
+                        ext="AppImage"
+                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_amd64.AppImage"
+                    />
                 </div>
 
                 <div className="mt-12 p-6 rounded-2xl bg-secondary/20 border border-border flex flex-col md:flex-row items-center justify-between gap-4">
