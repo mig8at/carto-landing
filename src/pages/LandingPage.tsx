@@ -162,7 +162,7 @@ export default function LandingPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
                         <a
-                            href="#pricing"
+                            href="https://carto.lemonsqueezy.com/checkout/buy/f0f8f1d9-323b-49dd-8905-f05c98159e98"
                             className="bg-primary text-primary-foreground px-8 py-4 rounded-2xl font-black flex items-center gap-3 hover:scale-[1.03] transition-transform shadow-[0_16px_48px_-12px_rgba(242,233,210,0.25)] text-[0.9rem]"
                         >
                             Get Lifetime Access <ArrowRight size={18} />
@@ -337,9 +337,9 @@ export default function LandingPage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <DownloadCard os="macOS" icon={Apple} version="v1.0.4" ext="DMG / Apple Silicon" link="#" />
-                    <DownloadCard os="Windows" icon={Monitor} version="v1.0.4" ext="MSI / x64" link="#" />
-                    <DownloadCard os="Linux" icon={HardDrive} version="v1.0.4" ext="AppImage / Deb" link="#" />
+                    <DownloadCard os="macOS" icon={Apple} version="v1.0.4" ext="DMG / Apple Silicon" link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi" />
+                    <DownloadCard os="Windows" icon={Monitor} version="v1.0.4" ext="MSI / x64" link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi" />
+                    <DownloadCard os="Linux" icon={HardDrive} version="v1.0.4" ext="AppImage / Deb" link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi" />
                 </div>
 
                 <div className="mt-12 p-6 rounded-2xl bg-secondary/20 border border-border flex flex-col md:flex-row items-center justify-between gap-4">
@@ -404,7 +404,7 @@ export default function LandingPage() {
                                 ))}
                             </ul>
                             <a
-                                href="https://cartolabs.io/checkout"
+                                href="https://carto.lemonsqueezy.com/checkout/buy/f0f8f1d9-323b-49dd-8905-f05c98159e98"
                                 className="block w-full bg-background text-foreground py-4 rounded-2xl font-black text-[1rem] hover:opacity-90 transition-all flex items-center justify-center gap-3 shadow-lg"
                             >
                                 <ShoppingCart size={20} /> Get License Key
