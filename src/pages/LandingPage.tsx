@@ -1,14 +1,12 @@
-import React, { useRef } from 'react'; // Importar useRef
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
     MessageSquare, Map, ArrowRight,
     Check, ShoppingCart, BookOpen, Shield, Zap, Terminal,
     ChevronRight, Sparkles,
-    Monitor, Apple, HardDrive, Download, Maximize // Añadir Maximize
+    Monitor, Apple, HardDrive, Download, Maximize
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-// --- COMPONENTES AUXILIARES ---
 
 const Badge = ({ children }: { children: React.ReactNode }) => (
     <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-[0.65rem] font-black uppercase tracking-[0.2em] border border-primary/20">
@@ -99,7 +97,7 @@ const CartoLogo = ({ size = 'md' }: { size?: 'sm' | 'md' }) => {
     return (
         <div className={`flex items-center gap-2.5 font-black ${textSize} tracking-tighter`}>
             <img
-                src="../assets/icon.png"
+                src="/assets/icon.png"
                 alt="Carto"
                 className={`${iconSize} object-contain`}
             />
@@ -119,7 +117,6 @@ const DownloadCard = ({ os, icon: Icon, version, ext, link }: any) => (
 
         <a
             href={link}
-            download
             className="cursor-pointer w-full py-3 bg-secondary hover:bg-primary hover:text-primary-foreground rounded-xl text-[0.75rem] font-black transition-all flex items-center justify-center gap-2"
         >
             <Download size={14} /> Download
@@ -128,6 +125,8 @@ const DownloadCard = ({ os, icon: Icon, version, ext, link }: any) => (
 );
 
 export default function LandingPage() {
+    const CHECKOUT_URL = "https://buy.cartolabs.io/checkout/buy/eec0657a-4077-41c7-8c3e-a10e16048769";
+
     return (
         <div className="overflow-x-hidden bg-background text-foreground min-h-screen font-sans">
             <div className="fixed inset-0 pointer-events-none dot-grid opacity-30" />
@@ -141,7 +140,7 @@ export default function LandingPage() {
                     <a href="#pricing" className="hover:text-foreground transition-colors">Pricing</a>
                 </div>
                 <a
-                    href="#pricing"
+                    href={CHECKOUT_URL}
                     className="bg-primary text-primary-foreground px-5 py-2 rounded-full text-[0.8rem] font-black hover:opacity-90 transition-all flex items-center gap-1.5"
                 >
                     Get Access <ChevronRight size={14} />
@@ -150,7 +149,7 @@ export default function LandingPage() {
 
             <section className="relative max-w-6xl mx-auto px-6 pt-16 pb-24 text-center z-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-                    <Badge>Now in Early Access</Badge>
+                    <Badge>Official v1.0 Release</Badge>
                     <h1 className="text-[3.8rem] md:text-[5.5rem] font-black mt-8 mb-6 leading-[0.95] tracking-tighter font-serif italic">
                         Understand your <span className="text-primary">codebase</span>
                         <br />in minutes.
@@ -162,7 +161,7 @@ export default function LandingPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
                         <a
-                            href="https://carto.lemonsqueezy.com/checkout/buy/eec0657a-4077-41c7-8c3e-a10e16048769"
+                            href={CHECKOUT_URL}
                             className="bg-primary text-primary-foreground px-8 py-4 rounded-2xl font-black flex items-center gap-3 hover:scale-[1.03] transition-transform shadow-[0_16px_48px_-12px_rgba(242,233,210,0.25)] text-[0.9rem]"
                         >
                             Get Lifetime Access <ArrowRight size={18} />
@@ -184,7 +183,7 @@ export default function LandingPage() {
                 >
                     <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full scale-75 pointer-events-none" />
                     <VideoPlayer
-                        src="../assets/chat.mp4"
+                        src="/assets/chat.mp4"
                         className="w-full max-w-5xl h-auto border border-border shadow-2xl object-contain"
                     />
                 </motion.div>
@@ -235,7 +234,7 @@ export default function LandingPage() {
                         className="flex justify-center"
                     >
                         <VideoPlayer
-                            src="../assets/graph.mp4"
+                            src="/assets/graph.mp4"
                             className="w-full h-auto border border-border shadow-xl object-contain"
                         />
                     </motion.div>
@@ -250,7 +249,7 @@ export default function LandingPage() {
                         className="order-2 md:order-1 flex justify-center"
                     >
                         <VideoPlayer
-                            src="../assets/files.mp4"
+                            src="/assets/files.mp4"
                             className="w-full h-auto border border-border shadow-xl object-contain"
                         />
                     </motion.div>
@@ -265,7 +264,7 @@ export default function LandingPage() {
                         <ul className="space-y-3 text-sm font-medium text-muted-foreground">
                             <li className="flex items-center gap-2"><Check size={16} className="text-primary" /> Reduces token consumption by up to 80%</li>
                             <li className="flex items-center gap-2"><Check size={16} className="text-primary" /> Clickable file references inside the chat</li>
-                            <li className="flex items-center gap-2"><Check size={16} className="text-primary" /> Support for models like Gemini 2.5 Pro and Flash</li>
+                            <li className="flex items-center gap-2"><Check size={16} className="text-primary" /> Support for Gemini 2.0 Pro and Flash models</li>
                         </ul>
                     </div>
                 </div>
@@ -280,17 +279,16 @@ export default function LandingPage() {
                     <FeatureCard
                         icon={Terminal}
                         title="Debug Assistant"
-                        desc="Full visibility into the pipeline. Generated by the local engine before it's sent to the LLM."
+                        desc="Full visibility into the pipeline. Review generated context maps before they are sent to the LLM."
                     />
                     <FeatureCard
                         icon={BookOpen}
                         title="Executive Summary"
-                        desc="Generates automated markdown documentation describing your project's architectural patterns and purpose. Perfect for onboarding."
+                        desc="Generates automated markdown documentation describing your project's architectural patterns. Perfect for onboarding."
                     />
                 </div>
             </section>
 
-            {/* ... Resto del código se mantiene igual ... */}
             <section id="how" className="relative max-w-6xl mx-auto px-6 py-24 z-10 bg-secondary/30 rounded-3xl border border-border">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div>
@@ -308,7 +306,7 @@ export default function LandingPage() {
                         <div className="space-y-7 relative">
                             <div className="absolute left-4 top-9 bottom-0 w-px bg-gradient-to-b from-primary/20 to-transparent" />
                             <Step n="01" title="Open any repo" desc="Drag a folder or click 'New Project'. Carto discovers all sub-repos and monorepos automatically." />
-                            <Step n="02" title="Local indexing runs" desc="Files, imports, routes, and definitions are extracted in seconds — all on your machine with no data leaving." />
+                            <Step n="02" title="Local indexing runs" desc="Files, imports, routes, and definitions are extracted in seconds — all on your machine." />
                             <Step n="03" title="AI maps the architecture" desc="One AI call (with your own API key) deduces logical domains and data flows from the local index." />
                             <Step n="04" title="Ask anything" desc="Chat with your codebase, click through the architecture map, or read the AI-generated summary." />
                         </div>
@@ -320,7 +318,7 @@ export default function LandingPage() {
                         transition={{ duration: 0.6 }}
                         className="flex justify-center"
                     >
-                        <img src="../assets/full.png" alt="full" />
+                        <img src="/assets/full.png" alt="Carto Interface" className="rounded-2xl border border-border shadow-2xl" />
                     </motion.div>
                 </div>
             </section>
@@ -342,7 +340,7 @@ export default function LandingPage() {
                         icon={Apple}
                         version="v1.0.0"
                         ext="DMG / Universal"
-                        link="https://github.com/mig8at/carto-explorer/raw/main/releases/download/v1.0.0/Carto_1.0.0_universal.dmg"
+                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_universal.dmg"
                     />
 
                     <DownloadCard
@@ -350,7 +348,7 @@ export default function LandingPage() {
                         icon={Monitor}
                         version="v1.0.0"
                         ext="MSI / x64"
-                        link="https://github.com/mig8at/carto-explorer/raw/main/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi"
+                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_x64_en-US.msi"
                     />
 
                     <DownloadCard
@@ -358,7 +356,7 @@ export default function LandingPage() {
                         icon={HardDrive}
                         version="v1.0.0"
                         ext="AppImage"
-                        link="https://github.com/mig8at/carto-explorer/raw/main/releases/download/v1.0.0/Carto_1.0.0_amd64.AppImage"
+                        link="https://github.com/mig8at/carto-explorer/releases/download/v1.0.0/Carto_1.0.0_amd64.AppImage"
                     />
                 </div>
 
@@ -368,14 +366,14 @@ export default function LandingPage() {
                             <Shield size={18} />
                         </div>
                         <div className="text-left">
-                            <p className="text-[0.8rem] font-bold text-foreground">Signed & Secure</p>
-                            <p className="text-[0.7rem] text-muted-foreground">Verified binaries. Your source code remains 100% private.</p>
+                            <p className="text-[0.8rem] font-bold text-foreground">Secure & Local-First</p>
+                            <p className="text-[0.7rem] text-muted-foreground">Verified binaries. Your source code remains 100% private on your machine.</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-6">
                         <div className="text-center md:text-right">
                             <p className="text-[0.6rem] font-black uppercase tracking-widest text-muted-foreground mb-1">Current Stable</p>
-                            <p className="text-[0.8rem] font-mono font-bold text-primary">build_id: carto_v1.0.4_stable</p>
+                            <p className="text-[0.8rem] font-mono font-bold text-primary">build_id: carto_v1.0.0_stable</p>
                         </div>
                     </div>
                 </div>
@@ -404,7 +402,7 @@ export default function LandingPage() {
                                 Pay once, use forever.
                             </h2>
                             <p className="text-primary-foreground/70 mb-8 font-medium text-[0.88rem]">
-                                Join 500+ developers shipping better code with Carto.
+                                Join developers shipping better code with Carto Explorer.
                             </p>
                             <div className="text-[5rem] md:text-[6rem] font-black leading-none mb-8 font-serif">
                                 $49<span className="text-[1.4rem] opacity-40 ml-2">USD</span>
@@ -424,7 +422,7 @@ export default function LandingPage() {
                                 ))}
                             </ul>
                             <a
-                                href="https://carto.lemonsqueezy.com/checkout/buy/eec0657a-4077-41c7-8c3e-a10e16048769"
+                                href={CHECKOUT_URL}
                                 className="block w-full bg-background text-foreground py-4 rounded-2xl font-black text-[1rem] hover:opacity-90 transition-all flex items-center justify-center gap-3 shadow-lg"
                             >
                                 <ShoppingCart size={20} /> Get License Key
@@ -446,7 +444,7 @@ export default function LandingPage() {
                         <a href="mailto:support@cartolabs.io" className="hover:text-foreground transition-colors">Contact</a>
                     </div>
                     <p className="text-muted-foreground text-[0.78rem] font-medium">
-                        © 2024 CartoLabs. Made in Medellín 🇨🇴
+                        © 2025 CartoLabs. Made with passion 🇨🇴
                     </p>
                 </div>
             </footer>
