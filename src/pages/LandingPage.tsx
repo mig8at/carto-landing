@@ -125,7 +125,7 @@ const DownloadCard = ({ os, icon: Icon, version, ext, link }: any) => (
 );
 
 export default function LandingPage() {
-    const CHECKOUT_URL = "https://buy.cartolabs.io/checkout/buy/eec0657a-4077-41c7-8c3e-a10e16048769";
+    const CHECKOUT_URL = "https://buy.cartolabs.io/checkout/buy/dae55798-e499-4c55-8c8a-cd2de5c0c980";
 
     return (
         <div className="overflow-x-hidden bg-background text-foreground min-h-screen font-sans">
